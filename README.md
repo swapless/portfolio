@@ -23,3 +23,9 @@
     * Event_year : Year of the event
     * Event_description : Something
     * Icon : Flag? for each one
+
+## checklist : three.js
+
+* othrographic camera fix :
+* camera rotation + sun rotate : use button
+* onclick(Sun

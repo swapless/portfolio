@@ -3,3 +3,11 @@ canvas {
   top: 0;
   left: 0;
 }
+
+#debug-canvas{
+ background-color: white;
+ border: 10px solid red;
+ z-index: 10;
+ height: 200px;
+ width: 200px;
+}

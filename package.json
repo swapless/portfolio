@@ -10,6 +10,7 @@
     "vite": "^2.3.3"
   },
   "dependencies": {
+    "simplex-noise": "^2.4.0",
     "three": "^0.128.0"
   }
 }
