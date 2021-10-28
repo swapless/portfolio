@@ -1,8 +1,50 @@
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.fullbody {
+  position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    margin: 0px;
+    background-color: aqua;
+    display: flex;
+    align-content: center;
+}
+
+
+.main {
+  margin: 0%;
+  width : 100%;
+  flex : 2;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+
+.title{
+  flex: 1;
+  margin: 0%;
+  width : 100%;
+  display: flex;
+}
+
+.container {
+  flex : 7 ; 
+  background: violet;
+  width: 100%;
+}
+
+#name {
+  font-size: 8vh;
+  font-family: 'Trispace', sans-serif;
+  width: 100%;
+  margin: 1vh;
+  padding: 1vh;
+  text-align: right;
+  background:tomato;
+}
+
+.space {
+  margin: 0%;
+  flex: 1;
+  background: burlywood;
 }
