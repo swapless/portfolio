@@ -29,3 +29,10 @@
 * othrographic camera fix :
 * camera rotation + sun rotate : use button
 * onclick(Sun
+
+## Foreground
+
+* [x] integrated
+* [] create basic list
+* [] load from json
+* [] onresize change 3js camera thing, i forgot what it was but i will know when i see it.
