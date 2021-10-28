@@ -1,0 +1,43 @@
+{
+  "about": "Something",
+  "skills": [
+    {
+      "name": "c++",
+      "logo": "url"
+    },
+    {
+      "name": "python",
+      "logo": "url2pythonlogo"
+    }
+  ],
+  "experience": [
+    {
+      "start_date": "2018-01-01T00:00:00.000Z",
+      "end_date": "2018-02-01T00:00:00.000Z",
+      "company_name": "Exampeer",
+      "description": "something"
+    },
+    {
+      "start_date": "2018-01-01T00:00:00.000Z",
+      "end_date": "2018-02-01T00:00:00.000Z",
+      "company_name": "IIT  Gandhinagar",
+      "description": "something"
+    }
+  ],
+  "education": [
+    {
+      "start_year": "2016",
+      "end_year": "2016",
+      "gpa": 9.5,
+      "description": ""
+    }
+  ],
+  "projects": [
+    {
+      "name": "",
+      "repo_url": "",
+      "description": "",
+      "tech": []
+    }
+  ]
+}
