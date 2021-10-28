@@ -33,6 +33,6 @@
 ## Foreground
 
 * [x] integrated
-* [] create basic list
-* [] load from json
-* [] onresize change 3js camera thing, i forgot what it was but i will know when i see it.
+* [ ] create basic list
+* [ ] load from json
+* [ ] onresize change 3js camera thing, i forgot what it was but i will know when i see it.
