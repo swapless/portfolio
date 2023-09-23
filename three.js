@@ -145,17 +145,12 @@ class SolarSystem {
     this.renderer.setSize(width, height);
   }
 
-  toggleTheme() {
-
-    const isLightMode = document.body.classList.contains('light-mode');
-
+  toggleTheme(isLightMode) {
     if (isLightMode) {
-      document.body.classList.remove('light-mode');
       this.sun.material.color.set(0xffffff);
       this.earth.material.color.set(0xffffff)
       this.renderer.setClearColor(0x000000);
     } else {
-      document.body.classList.add('light-mode');
       this.sun.material.color.set(0x000000);
       this.earth.material.color.set(0x000000)
       this.renderer.setClearColor(0xffffff);
@@ -165,11 +160,18 @@ class SolarSystem {
 
 }
 
-const solarSystem = new SolarSystem();
+// const solarSystem = new SolarSystem();
 
 
 const themeToggleBtn = document.getElementById('themeToggle');
 
 themeToggleBtn.addEventListener('click', () => {
-        solarSystem.toggleTheme();
+  const isLightMode = document.body.classList.contains('light-mode');
+
+    if (isLightMode) {
+      document.body.classList.remove('light-mode');
+    } else {
+      document.body.classList.add('light-mode');
+    }
+    solarSystem.toggleTheme(isLightMode);
 });

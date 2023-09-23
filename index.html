@@ -6,34 +6,42 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Trispace:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Threejs Background</title>
   </head>
   <body>
+
     <canvas id='bg'></canvas>
 
     <div class="fullbody debug">
-      
-      <div class="blog-space debug">
+    
+      <div class="title debug">
+        <div id="name" class="">
+          Swapnil Sahu
+          <div id="desc" class=""> Aspiring DevOps Engineer and Linux Enthusiast </div>
+        </div>
+      </div>
+
+      <div class="navbar debug">
+        <ul class="navbar-list">
+          <li><a href="https://github.com/swapless" target="_blank"><i class="fab fa-github"></i></a></li>
+          <li><a href="mailto:swapnil.sahu@swapless.dev"><i class="far fa-envelope"></i></a></li>
+          <li><a href="https://www.linkedin.com/in/your-profile" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+          <li><a href="https://blog.swapless.dev"><i class="fas fa-external-link-alt"></i></a></li>
+          <li id="themeToggle"><i class="fas fa-lightbulb"></i></li>
+          <li><i class="fas fa-expand-arrows-alt" id="fullscreenToggle"></i></li>
+        </ul>
       </div>
       
-      <div class="main debug">
-        
-        <div class="title debug">
-          <div id="name" class="">Swapnil Sahu
-            <div id="desc" class=""> Aspiring DevOps Engineer and Linux Enthusiast     </div>
-          </div>
-        </div>
-    
-        <div class="container debug">
-          <button id="themeToggle">Toggle Theme</button>
-        </div>
+      <div class="container debug ">
       </div>
     
     </div>
     
   
-    <!-- <script type="module" src="/main.js"></script> -->
     <script type="module" src="/three.js"></script>
+    <script type="module" src="/main.js"></script>
+
   </body>
 </html>
