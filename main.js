@@ -1,64 +1,131 @@
-import './style.css'
-import * as THREE from 'three'
+import * as THREE from 'three';
+import * as TWEEN from 'tween.js';
+import noise from 'noisejs';
 
-const scene = new THREE.Scene() ;
-const camera = new THREE.OrthographicCamera(-10,30,10,-10,10,500) ; 
-const renderer = new THREE.WebGLRenderer({
-  canvas : document.querySelector('#bg') , 
-})
+class SolarSystem {
+  constructor() {
+    this.scene = new THREE.Scene();
+    this.camera = this.createCamera();
+    this.renderer = this.createRenderer();
 
-renderer.setPixelRatio(window.devicePixelRatio) ; 
-renderer.setSize(window.innerWidth, window.innerHeight) ; 
+    this.earth = this.createEarth();
+    this.sun = this.createSun();
 
-const earth_geometry = new THREE.SphereGeometry(20,20,20) ; 
-const sun_geometry = new THREE.SphereGeometry(4,20,20) ; 
+    this.setupLights();
 
-const earth_sphere_material = new THREE.MeshBasicMaterial({
-    color: 0xffffff ,
-    wireframe : true, 
-    wireframeLinewidth : 1,
-})
+    this.animate();
+    this.setupEventListeners();
+    this.generateAndTransitionDisplacementMap();
+  }
 
-const sun_sphere_material = new THREE.MeshBasicMaterial({
-  color: 0xffffff ,
-  wireframe : true, 
-  wireframeLinewidth : 1,
-})
+  createCamera() {
+    const camera = new THREE.OrthographicCamera(-10, 30, 10, -10, 10, 500);
+    camera.position.setZ(100);
+    return camera;
+  }
 
-console.log(earth_geometry) ;
+  createRenderer() {
+    const renderer = new THREE.WebGLRenderer({
+      canvas: document.querySelector('#bg'),
+    });
 
+    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    return renderer;
+  }
 
-const earth = new THREE.Mesh(earth_geometry, earth_sphere_material) ;
-const sun = new THREE.Mesh(sun_geometry, sun_sphere_material)
+  createEarth() {
+    const earthGeometry = new THREE.SphereGeometry(20, 20, 20);
+    const earthMaterial = this.createEarthMaterial();
+    const earth = new THREE.Mesh(earthGeometry, earthMaterial);
 
-// postions
+    earth.position.y = -20;
+    earth.position.z = 0;
 
-camera.position.setZ(100) ;
+    this.scene.add(earth);
 
-earth.position.y = -20 ; 
-earth.position.z = 0 ; 
+    return earth;
+  }
 
-sun.position.x = -5 ;
-sun.position.y = 5 ;
-sun.position.z = 10 ;
+  createEarthMaterial() {
+    const displacementMapTexture = this.generateRandomDisplacementMap(64, 64, 1);
 
-// postions end 
+    return new THREE.MeshPhongMaterial({
+      color: 0xffffff,
+      wireframe: true,
+      wireframeLinewidth: 1,
+      displacementMap: displacementMapTexture,
+    });
+  }
 
-scene.add(earth, sun) 
+  createSun() {
+    const sunGeometry = new THREE.SphereGeometry(4, 20, 20);
+    const sunMaterial = new THREE.MeshBasicMaterial({
+      color: 0xffffff,
+      wireframe: true,
+      wireframeLinewidth: 1,
+    });
 
-function animate(){
-    requestAnimationFrame(animate) ;     
-    renderer.render(scene, camera) ; 
-    earth.rotation.x += 0.0005  ;
-    sun.rotation.y -= 0.001 ;
+    const sun = new THREE.Mesh(sunGeometry, sunMaterial);
+
+    sun.position.x = -5;
+    sun.position.y = 5;
+    sun.position.z = 10;
+
+    this.scene.add(sun);
+
+    return sun;
+  }
+
+  setupLights() {
+    const ambientLight = new THREE.AmbientLight(0xffffff, 1);
+    this.scene.add(ambientLight);
+  }
+
+  animate() {
+    requestAnimationFrame(() => this.animate());
+    TWEEN.update();
+    this.renderer.render(this.scene, this.camera);
+    this.earth.rotation.x += 0.0005;
+    this.sun.rotation.y -= 0.001;
+  }
+
+  setupEventListeners() {
+    window.addEventListener('resize', () => this.handleResize());
+  }
+
+  handleResize() {
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    this.camera.aspect = width / height;
+    this.camera.updateProjectionMatrix();
+    this.renderer.setSize(width, height);
+  }
+
+  generateRandomDisplacementMap(width, height, displacementScale) {
+    const data = new Float32Array(width * height);
+
+    for (let i = 0; i < width * height; i++) {
+      data[i] = (Math.random() * 2 - 1) * displacementScale;
+    }
+
+    const texture = new THREE.DataTexture(data, width, height, THREE.RedFormat, THREE.FloatType);
+    texture.needsUpdate = true;
+
+    return texture;
+  }
+
+  generateAndTransitionDisplacementMap() {
+    const newDisplacementMapTexture = this.generateRandomDisplacementMap(64, 64, 1);
+
+    const tween = new TWEEN.Tween(this.earth.material.displacementMap)
+      .to(newDisplacementMapTexture, 10)
+      .easing(TWEEN.Easing.Quadratic.InOut)
+      .onUpdate(() => {
+        this.earth.material.displacementMap.needsUpdate = true;
+      })
+      .start();
+  }
 }
 
-animate()
-
-window.addEventListener('resize',()=>{
-  const width = window.innerWidth ; 
-  const height = window.innerHeight ;
-  camera.aspect = width/height ;
-  camera.updateProjectionMatrix() ;
-  renderer.setSize(width,height) ;  
-})
+const solarSystem = new SolarSystem();

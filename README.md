@@ -40,3 +40,22 @@
 ## Future 
 * [ ] Add Blog 
  * [ ] Have to make the blog appear on space + expand it when blog clicked
+
+
+# Site Rewrite 
+
+## Background 
+
+- [x] GeoCentric Rotation Scene
+- [ ] Terrain Generation
+- [x] Dark/Light Mode Toggle 
+- [ ] Live Resizing
+- [ ] Mobile ViewPort Integration
+- [ ] FullScreen Button
+- [x] Parameterize Sun,Earth Params
+- [ ] Parameterize Orthographic Camera Frustum for AutoAdjusting Scenes
+
+
+
+
+
