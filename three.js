@@ -1,4 +1,4 @@
-import './style.css'
+// import './style.css'
 import * as THREE from 'three';
 import * as TWEEN from 'tween.js';
 
@@ -160,7 +160,7 @@ class SolarSystem {
 
 }
 
-// const solarSystem = new SolarSystem();
+const solarSystem = new SolarSystem();
 
 
 const themeToggleBtn = document.getElementById('themeToggle');

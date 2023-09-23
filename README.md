@@ -51,11 +51,12 @@
 - [x] Dark/Light Mode Toggle 
 - [ ] Live Resizing
 - [ ] Mobile ViewPort Integration
-- [ ] FullScreen Button
 - [x] Parameterize Sun,Earth Params
 - [ ] Parameterize Orthographic Camera Frustum for AutoAdjusting Scenes
+- [ ] Milky Way scene generation 
 
+## Foreground 
 
-
+- [x] FullScreen Button
 
 
