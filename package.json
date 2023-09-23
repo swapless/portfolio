@@ -12,6 +12,7 @@
   "dependencies": {
     "noisejs": "^2.1.0",
     "simplex-noise": "^2.4.0",
-    "three": "^0.128.0"
+    "three": "^0.128.0",
+    "tween.js": "^16.6.0"
   }
 }

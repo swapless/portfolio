@@ -41,17 +41,16 @@ class SolarSystem {
         widthSegments : 200 , 
         heightSegments : 200, 
       }
-    }  
+    }
     this.earth = this.createEarth(earthParams);
     this.sun = this.createSun(sunParams);
 
-
     this.setupLights();
-
     this.animate();
     this.setupEventListeners();
   }
 
+  // TODO : Parameterize Orthographic Camera Frustum for AutoAdjusting Scenes
   createCamera() {
     const camera = new THREE.OrthographicCamera(-10, 30, 10, -10, 10, 500);
     camera.position.setZ(100);
