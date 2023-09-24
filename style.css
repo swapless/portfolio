@@ -68,14 +68,20 @@ body.light-mode .navbar-list li a {
 .main {
   display: flex;
   flex-direction: column;
+
   font-family: 'Trispace', sans-serif;
+  position: fixed;
+  left: 0;
+  top: 0;
+  margin: 0;
+  height: 100%;
+
 }
 
 
 .title {
   display: flex ; 
   flex-direction: column;
-  height: 100%;
   width: 100%;
   text-align: right;
 }
@@ -122,4 +128,10 @@ body.light-mode .navbar-list li {
 }
 
 .container {
+  flex: 100;
+  height: 100%;
+  width: 50%;
+  align-self: flex-end;
+  text-align: justify;
+  overflow: hidden;
 }
